@@ -37,11 +37,6 @@ use Symfony\Component\Form\FormInterface;
  */
 class SalesReturnGuiCommunicationFactory extends AbstractCommunicationFactory
 {
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return \Symfony\Component\Form\FormInterface
-     */
     public function getCreateReturnForm(OrderTransfer $orderTransfer): FormInterface
     {
         $returnCreateFormDataProvider = $this->createReturnCreateFormDataProvider();
@@ -53,9 +48,6 @@ class SalesReturnGuiCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\SalesReturnGui\Communication\Form\DataProvider\ReturnCreateFormDataProvider
-     */
     public function createReturnCreateFormDataProvider(): ReturnCreateFormDataProvider
     {
         return new ReturnCreateFormDataProvider(
@@ -77,9 +69,6 @@ class SalesReturnGuiCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\SalesReturnGui\Communication\Table\ReturnTable
-     */
     public function createReturnTable(): ReturnTable
     {
         return new ReturnTable(
@@ -89,11 +78,6 @@ class SalesReturnGuiCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return \Spryker\Zed\SalesReturnGui\Communication\Table\OrderReturnTable
-     */
     public function createOrderReturnTable(OrderTransfer $orderTransfer): OrderReturnTable
     {
         return new OrderReturnTable(
@@ -103,9 +87,6 @@ class SalesReturnGuiCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\SalesReturnGui\Communication\Form\Handler\ReturnHandlerInterface
-     */
     public function createReturnHandler(): ReturnHandlerInterface
     {
         return new ReturnHandler(
@@ -114,17 +95,11 @@ class SalesReturnGuiCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\SalesReturnGui\Communication\Extractor\ReturnExtractorInterface
-     */
     public function createReturnExtractor(): ReturnExtractorInterface
     {
         return new ReturnExtractor($this->getConfig());
     }
 
-    /**
-     * @return \Spryker\Zed\SalesReturnGui\Communication\Reader\CustomerReaderInterface
-     */
     public function createCustomerReader(): CustomerReaderInterface
     {
         return new CustomerReader(
@@ -133,65 +108,41 @@ class SalesReturnGuiCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\SalesReturnGui\Dependency\Facade\SalesReturnGuiToMoneyFacadeInterface
-     */
     public function getMoneyFacade(): SalesReturnGuiToMoneyFacadeInterface
     {
         return $this->getProvidedDependency(SalesReturnGuiDependencyProvider::FACADE_MONEY);
     }
 
-    /**
-     * @return \Spryker\Zed\SalesReturnGui\Dependency\Facade\SalesReturnGuiToSalesFacadeInterface
-     */
     public function getSalesFacade(): SalesReturnGuiToSalesFacadeInterface
     {
         return $this->getProvidedDependency(SalesReturnGuiDependencyProvider::FACADE_SALES);
     }
 
-    /**
-     * @return \Spryker\Zed\SalesReturnGui\Dependency\Facade\SalesReturnGuiToGlossaryFacadeInterface
-     */
     public function getGlossaryFacade(): SalesReturnGuiToGlossaryFacadeInterface
     {
         return $this->getProvidedDependency(SalesReturnGuiDependencyProvider::FACADE_GLOSSARY);
     }
 
-    /**
-     * @return \Spryker\Zed\SalesReturnGui\Dependency\Facade\SalesReturnGuiToSalesReturnFacadeInterface
-     */
     public function getSalesReturnFacade(): SalesReturnGuiToSalesReturnFacadeInterface
     {
         return $this->getProvidedDependency(SalesReturnGuiDependencyProvider::FACADE_SALES_RETURN);
     }
 
-    /**
-     * @return \Spryker\Zed\SalesReturnGui\Dependency\Facade\SalesReturnGuiToCustomerFacadeInterface
-     */
     public function getCustomerFacade(): SalesReturnGuiToCustomerFacadeInterface
     {
         return $this->getProvidedDependency(SalesReturnGuiDependencyProvider::FACADE_CUSTOMER);
     }
 
-    /**
-     * @return \Spryker\Zed\SalesReturnGui\Dependency\Facade\SalesReturnGuiToOmsFacadeInterface
-     */
     public function getOmsFacade(): SalesReturnGuiToOmsFacadeInterface
     {
         return $this->getProvidedDependency(SalesReturnGuiDependencyProvider::FACADE_OMS);
     }
 
-    /**
-     * @return \Spryker\Zed\SalesReturnGui\Dependency\Service\SalesReturnGuiToUtilDateTimeServiceInterface
-     */
     public function getUtilDateTimeService(): SalesReturnGuiToUtilDateTimeServiceInterface
     {
         return $this->getProvidedDependency(SalesReturnGuiDependencyProvider::SERVICE_UTIL_DATE_TIME);
     }
 
-    /**
-     * @return \Orm\Zed\SalesReturn\Persistence\SpySalesReturnQuery
-     */
     public function getSalesReturnPropelQuery(): SpySalesReturnQuery
     {
         return $this->getProvidedDependency(SalesReturnGuiDependencyProvider::PROPEL_QUERY_SALES_RETURN);

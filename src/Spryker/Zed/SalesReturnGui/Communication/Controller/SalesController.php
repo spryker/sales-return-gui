@@ -19,11 +19,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class SalesController extends AbstractController
 {
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return array
-     */
     public function listAction(Request $request): array
     {
         /** @phpstan-var \Generated\Shared\Transfer\OrderTransfer */
@@ -37,11 +32,6 @@ class SalesController extends AbstractController
         ];
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
     public function tableAction(Request $request): JsonResponse
     {
         $idSalesOrder = $request->query->getInt(OrderReturnTable::PARAM_ID_ORDER) ?: null;

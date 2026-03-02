@@ -26,9 +26,6 @@ class OrderReturnTableMock extends OrderReturnTable
         return $this;
     }
 
-    /**
-     * @return array
-     */
     public function fetchData(): array
     {
         return $this->init()->prepareData($this->config);

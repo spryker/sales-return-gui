@@ -92,11 +92,6 @@ class ReturnTable extends AbstractTable
      */
     protected $salesReturnQuery;
 
-    /**
-     * @param \Spryker\Zed\SalesReturnGui\Dependency\Service\SalesReturnGuiToUtilDateTimeServiceInterface $utilDateTimeService
-     * @param \Spryker\Zed\SalesReturnGui\SalesReturnGuiConfig $salesReturnGuiConfig
-     * @param \Orm\Zed\SalesReturn\Persistence\SpySalesReturnQuery $salesReturnQuery
-     */
     public function __construct(
         SalesReturnGuiToUtilDateTimeServiceInterface $utilDateTimeService,
         SalesReturnGuiConfig $salesReturnGuiConfig,
@@ -107,11 +102,6 @@ class ReturnTable extends AbstractTable
         $this->salesReturnGuiConfig = $salesReturnGuiConfig;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function configure(TableConfiguration $config): TableConfiguration
     {
         $config->setHeader([
@@ -147,11 +137,6 @@ class ReturnTable extends AbstractTable
         return $config;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return array
-     */
     protected function prepareData(TableConfiguration $config): array
     {
         /** @var \Propel\Runtime\Collection\ObjectCollection<\Orm\Zed\SalesReturn\Persistence\SpySalesReturn> $salesReturnEntityCollection */
@@ -255,11 +240,6 @@ class ReturnTable extends AbstractTable
         return $stateLabels;
     }
 
-    /**
-     * @param \Orm\Zed\SalesReturn\Persistence\SpySalesReturn $salesReturnEntity
-     *
-     * @return string
-     */
     protected function buildLinks(SpySalesReturn $salesReturnEntity): string
     {
         $buttons = [];

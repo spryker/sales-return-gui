@@ -22,9 +22,6 @@ class ReturnExtractor implements ReturnExtractorInterface
      */
     protected $salesReturnGuiConfig;
 
-    /**
-     * @param \Spryker\Zed\SalesReturnGui\SalesReturnGuiConfig $salesReturnGuiConfig
-     */
     public function __construct(SalesReturnGuiConfig $salesReturnGuiConfig)
     {
         $this->salesReturnGuiConfig = $salesReturnGuiConfig;

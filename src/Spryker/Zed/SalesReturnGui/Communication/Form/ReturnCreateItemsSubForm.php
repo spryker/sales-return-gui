@@ -35,11 +35,6 @@ class ReturnCreateItemsSubForm extends AbstractType
      */
     public const FIELD_CUSTOM_REASON = 'customReason';
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setRequired([

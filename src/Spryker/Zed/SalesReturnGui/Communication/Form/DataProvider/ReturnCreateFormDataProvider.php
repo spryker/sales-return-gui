@@ -57,11 +57,6 @@ class ReturnCreateFormDataProvider
         $this->returnCreateFormHandlerPlugins = $returnCreateFormHandlerPlugins;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return array
-     */
     public function getData(OrderTransfer $orderTransfer): array
     {
         $orderTransfer = $this->translateReturnPolicyMessages($orderTransfer);
@@ -83,11 +78,6 @@ class ReturnCreateFormDataProvider
         ];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return array
-     */
     protected function mapReturnItemTransfers(OrderTransfer $orderTransfer): array
     {
         $returnItemTransfers = [];
@@ -120,12 +110,6 @@ class ReturnCreateFormDataProvider
         return $returnReasonChoices;
     }
 
-    /**
-     * @param array $returnCreateFormData
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return array
-     */
     protected function executeReturnCreateFormExpanderPlugins(array $returnCreateFormData, OrderTransfer $orderTransfer): array
     {
         foreach ($this->returnCreateFormHandlerPlugins as $returnCreateFormHandlerPlugin) {
@@ -135,11 +119,6 @@ class ReturnCreateFormDataProvider
         return $returnCreateFormData;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return \Generated\Shared\Transfer\OrderTransfer
-     */
     protected function translateReturnPolicyMessages(OrderTransfer $orderTransfer): OrderTransfer
     {
         foreach ($orderTransfer->getItems() as $itemTransfer) {
@@ -149,11 +128,6 @@ class ReturnCreateFormDataProvider
         return $orderTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ItemTransfer
-     */
     protected function translateReturnPolicyMessage(ItemTransfer $itemTransfer): ItemTransfer
     {
         if (!$itemTransfer->getReturnPolicyMessages()->count()) {

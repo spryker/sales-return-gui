@@ -43,12 +43,6 @@ class SalesReturnGuiCommunicationTester extends Actor
      */
     protected const SHIPPED_STATE_NAME = 'shipped';
 
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     * @param \Generated\Shared\Transfer\CustomerTransfer|null $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\ReturnTransfer|null
-     */
     public function createReturnByStateMachineProcessName(
         OrderTransfer $orderTransfer,
         ?CustomerTransfer $customerTransfer = null
@@ -98,13 +92,6 @@ class SalesReturnGuiCommunicationTester extends Actor
             ->setItems($saveOrderTransfer->getOrderItems());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     * @param array $currencyData
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected function buildFakeQuote(CustomerTransfer $customerTransfer, StoreTransfer $storeTransfer, array $currencyData): QuoteTransfer
     {
         /** @var \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer */
@@ -124,9 +111,6 @@ class SalesReturnGuiCommunicationTester extends Actor
         return $quoteTransfer;
     }
 
-    /**
-     * @return \Orm\Zed\SalesReturn\Persistence\SpySalesReturnReasonQuery
-     */
     protected function getSalesReturnReasonQuery(): SpySalesReturnReasonQuery
     {
         return SpySalesReturnReasonQuery::create();

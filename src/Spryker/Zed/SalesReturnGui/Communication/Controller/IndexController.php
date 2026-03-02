@@ -15,9 +15,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class IndexController extends AbstractController
 {
-    /**
-     * @return array
-     */
     public function indexAction(): array
     {
         $returnTable = $this->getFactory()->createReturnTable();
@@ -27,9 +24,6 @@ class IndexController extends AbstractController
         ]);
     }
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
     public function tableAction(): JsonResponse
     {
         return $this->jsonResponse(

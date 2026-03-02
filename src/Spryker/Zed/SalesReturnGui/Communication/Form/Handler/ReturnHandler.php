@@ -42,12 +42,6 @@ class ReturnHandler implements ReturnHandlerInterface
         $this->returnCreateFormHandlerPlugins = $returnCreateFormHandlerPlugins;
     }
 
-    /**
-     * @param array $returnCreateFormData
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return \Generated\Shared\Transfer\ReturnResponseTransfer
-     */
     public function createReturn(array $returnCreateFormData, OrderTransfer $orderTransfer): ReturnResponseTransfer
     {
         $returnCreateRequestTransfer = $this->buildReturnCreateRequestTransfer($returnCreateFormData, $orderTransfer);
@@ -61,12 +55,6 @@ class ReturnHandler implements ReturnHandlerInterface
             ->setIsSuccessful(false);
     }
 
-    /**
-     * @param array $returnCreateFormData
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return \Generated\Shared\Transfer\ReturnCreateRequestTransfer
-     */
     protected function buildReturnCreateRequestTransfer(array $returnCreateFormData, OrderTransfer $orderTransfer): ReturnCreateRequestTransfer
     {
         $returnCreateRequestTransfer = (new ReturnCreateRequestTransfer())
@@ -91,11 +79,6 @@ class ReturnHandler implements ReturnHandlerInterface
         return $returnCreateRequestTransfer;
     }
 
-    /**
-     * @param array $returnItemFormData
-     *
-     * @return string|null
-     */
     protected function extractReason(array $returnItemFormData): ?string
     {
         if ($returnItemFormData[ReturnItemTransfer::REASON] === ReturnCreateFormDataProvider::CUSTOM_REASON_KEY && $returnItemFormData[ReturnCreateItemsSubForm::FIELD_CUSTOM_REASON]) {
@@ -105,22 +88,11 @@ class ReturnHandler implements ReturnHandlerInterface
         return $returnItemFormData[ReturnItemTransfer::REASON];
     }
 
-    /**
-     * @param array $returnItemFormData
-     *
-     * @return bool
-     */
     protected function isReturnItemChecked(array $returnItemFormData): bool
     {
         return !empty($returnItemFormData[ItemTransfer::IS_RETURNABLE]);
     }
 
-    /**
-     * @param array $returnCreateFormData
-     * @param \Generated\Shared\Transfer\ReturnCreateRequestTransfer $returnCreateRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ReturnCreateRequestTransfer
-     */
     protected function executeReturnCreateFormExpanderPlugins(
         array $returnCreateFormData,
         ReturnCreateRequestTransfer $returnCreateRequestTransfer

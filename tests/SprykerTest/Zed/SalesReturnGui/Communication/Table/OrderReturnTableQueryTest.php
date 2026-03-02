@@ -59,9 +59,6 @@ class OrderReturnTableQueryTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -70,9 +67,6 @@ class OrderReturnTableQueryTest extends Unit
         $this->tester->configureTestStateMachine([static::DEFAULT_OMS_PROCESS_NAME]);
     }
 
-    /**
-     * @return void
-     */
     public function testFetchDataReturnsCorrectOrderReturnData(): void
     {
         // Arrange
@@ -96,9 +90,6 @@ class OrderReturnTableQueryTest extends Unit
         $this->assertEquals($returnTransfer->getReturnReference(), $result[0][static::COL_RETURN_REFERENCE]);
     }
 
-    /**
-     * @return void
-     */
     protected function registerTwigServiceMock(): void
     {
         $this->tester->getContainer()->set(static::SERVICE_TWIG, $this->getTwigMock());
@@ -131,9 +122,6 @@ class OrderReturnTableQueryTest extends Unit
         return $twigMock;
     }
 
-    /**
-     * @return \Twig\Loader\LoaderInterface
-     */
     protected function getChainLoader(): LoaderInterface
     {
         return new ChainLoader();

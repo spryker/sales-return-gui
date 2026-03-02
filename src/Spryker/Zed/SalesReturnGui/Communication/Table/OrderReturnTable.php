@@ -94,11 +94,6 @@ class OrderReturnTable extends AbstractTable
      */
     protected $salesReturnQuery;
 
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     * @param \Spryker\Zed\SalesReturnGui\Dependency\Facade\SalesReturnGuiToMoneyFacadeInterface $moneyFacade
-     * @param \Orm\Zed\SalesReturn\Persistence\SpySalesReturnQuery $salesReturnQuery
-     */
     public function __construct(
         OrderTransfer $orderTransfer,
         SalesReturnGuiToMoneyFacadeInterface $moneyFacade,
@@ -111,11 +106,6 @@ class OrderReturnTable extends AbstractTable
         $this->baseUrl = static::BASE_URL;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function configure(TableConfiguration $config): TableConfiguration
     {
         $config->setUrl(sprintf('table?%s=%s', static::PARAM_ID_ORDER, $this->orderTransfer->getIdSalesOrder()));
@@ -141,11 +131,6 @@ class OrderReturnTable extends AbstractTable
         return $config;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return array
-     */
     protected function prepareData(TableConfiguration $config): array
     {
         $results = [];

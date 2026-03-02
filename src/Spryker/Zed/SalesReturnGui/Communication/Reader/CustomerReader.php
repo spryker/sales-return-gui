@@ -24,10 +24,6 @@ class CustomerReader implements CustomerReaderInterface
      */
     protected $salesFacade;
 
-    /**
-     * @param \Spryker\Zed\SalesReturnGui\Dependency\Facade\SalesReturnGuiToCustomerFacadeInterface $customerFacade
-     * @param \Spryker\Zed\SalesReturnGui\Dependency\Facade\SalesReturnGuiToSalesFacadeInterface $salesFacade
-     */
     public function __construct(
         SalesReturnGuiToCustomerFacadeInterface $customerFacade,
         SalesReturnGuiToSalesFacadeInterface $salesFacade
@@ -36,11 +32,6 @@ class CustomerReader implements CustomerReaderInterface
         $this->salesFacade = $salesFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ReturnTransfer $returnTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function getCustomerFromReturn(ReturnTransfer $returnTransfer): CustomerTransfer
     {
         $customerReference = $returnTransfer->getCustomerReference();
@@ -60,11 +51,6 @@ class CustomerReader implements CustomerReaderInterface
         return $customerTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ReturnTransfer $returnTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected function getCustomerFromOrder(ReturnTransfer $returnTransfer): CustomerTransfer
     {
         $idSalesOrder = $returnTransfer->getReturnItems()

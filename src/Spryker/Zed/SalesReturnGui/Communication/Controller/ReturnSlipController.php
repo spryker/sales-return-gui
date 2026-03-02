@@ -79,11 +79,6 @@ class ReturnSlipController extends AbstractController
         ];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ReturnTransfer $returnTransfer
-     *
-     * @return \Generated\Shared\Transfer\ReturnTransfer
-     */
     protected function sortReturnItemByOrderReference(ReturnTransfer $returnTransfer): ReturnTransfer
     {
         $returnTransfer->getReturnItems()->uasort(
@@ -95,11 +90,6 @@ class ReturnSlipController extends AbstractController
         return $returnTransfer;
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Generated\Shared\Transfer\ReturnTransfer|null
-     */
     protected function findReturn(Request $request): ?ReturnTransfer
     {
         $idSalesReturn = $this->castId(
