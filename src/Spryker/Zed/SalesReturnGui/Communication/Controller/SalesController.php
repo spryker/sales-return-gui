@@ -19,6 +19,13 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class SalesController extends AbstractController
 {
+    /**
+     * @deprecated Exists for BC reasons. Use {@link \Spryker\Zed\SalesReturnGui\Communication\Plugin\Sales\SalesReturnListBlockRendererPlugin} instead.
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return array
+     */
     public function listAction(Request $request): array
     {
         /** @phpstan-var \Generated\Shared\Transfer\OrderTransfer */
