@@ -63,7 +63,13 @@
     </td>
     <td rowspan="{{ numberOfItemAdditions }}" class="state-history">
         {% if not isBundleProduct %}
-            <a href="{{ url('/oms/index/draw', {'process': orderItem.process, 'state': orderItem.state.name}) }}" target="_blank">{{ (orderItem.stateHistory | first).name }}</a> ({{ orderItem.process }})
+            {% set visualizerLink = include('@StateMachineVisualizer/Partial/link.twig', {stateMachineType: 'oms', processName: orderItem.process, highlightState: orderItem.state.name}, false, true) %}
+            {% if visualizerLink %}
+                {{ visualizerLink | raw }}
+            {% else %}
+                <a href="{{ url('/oms/index/draw', {'process': orderItem.process, 'state': orderItem.state.name}) }}" target="_blank">{{ (orderItem.stateHistory | first).name }}</a>
+            {% endif %}
+            ({{ orderItem.process }})
 
             <br>
 
