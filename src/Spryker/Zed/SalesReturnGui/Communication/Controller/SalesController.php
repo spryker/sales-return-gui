@@ -41,7 +41,7 @@ class SalesController extends AbstractController
 
     public function tableAction(Request $request): JsonResponse
     {
-        $idSalesOrder = $request->query->getInt(OrderReturnTable::PARAM_ID_ORDER) ?: null;
+        $idSalesOrder = (int)$request->query->get(OrderReturnTable::PARAM_ID_ORDER, 0) ?: null;
 
         $orderReturnTable = $this->getFactory()
             ->createOrderReturnTable((new OrderTransfer())->setIdSalesOrder($idSalesOrder));
@@ -61,9 +61,9 @@ class SalesController extends AbstractController
     protected function getOrder(Request $request): OrderTransfer
     {
         // @deprecated Exists for BC reasons. Will be removed in the next major release.
-        if ($request->request->has('orderTransfer')) {
+        if ($request->attributes->has('orderTransfer')) {
             /** @phpstan-var \Generated\Shared\Transfer\OrderTransfer */
-            return $request->request->get('orderTransfer');
+            return $request->attributes->get('orderTransfer');
         }
 
         if (!$request->request->has('serializedOrderTransfer')) {
